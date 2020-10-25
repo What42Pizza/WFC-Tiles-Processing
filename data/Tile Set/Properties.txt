@@ -1,0 +1,8 @@
+{
+	"name": "circuit tile set",
+	"tile width": "16",
+	"tile height": "16",
+	"tile properties": {
+		
+	}
+}
