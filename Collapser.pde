@@ -11,10 +11,10 @@ import java.util.Arrays;
 boolean Done = false;
 boolean Errored = false;
 
-long Averages_TimeForPropagate = 0;
-long Averages_TimeForSelecting = 0;
-int  Averages_PropagateCount = 0;
-int  Averages_SelectingCount = 0;
+//long Averages_TimeForPropagate = 0;
+//long Averages_TimeForSelecting = 0;
+//int  Averages_PropagateCount = 0;
+//int  Averages_SelectingCount = 0;
 
 IntList CollapsedTiles = new IntList();
 
@@ -26,22 +26,22 @@ void CollapseSelected() { // ---------------------------------------------------
   SPMap [SelectedX] [SelectedY] = new int[] {CollapsedTile};
   AddCoordsToList (CollapsedTiles, SelectedX, SelectedY);
   
-  long StartNano;
+  //long StartNano;
   
-  StartNano = System.nanoTime();
+  //StartNano = System.nanoTime();
   PropagateConstraints (SelectedX, SelectedY);
-  Averages_TimeForPropagate += System.nanoTime() - StartNano;
+  //Averages_TimeForPropagate += System.nanoTime() - StartNano;
   
-  StartNano = System.nanoTime();
+  //StartNano = System.nanoTime();
   SelectLowestEntropy();
-  Averages_TimeForSelecting += System.nanoTime() - StartNano;
+  //Averages_TimeForSelecting += System.nanoTime() - StartNano;
   
-  Averages_PropagateCount ++;
-  Averages_SelectingCount ++;
+  //Averages_PropagateCount ++;
+  //Averages_SelectingCount ++;
   
-  println();
-  println ("Time for propagate: " + (Averages_TimeForPropagate / Averages_PropagateCount));
-  println ("Time for selecting: " + (Averages_TimeForSelecting / Averages_SelectingCount));
+  //println();
+  //println ("Time for propagate: " + (Averages_TimeForPropagate / Averages_PropagateCount));
+  //println ("Time for selecting: " + (Averages_TimeForSelecting / Averages_SelectingCount));
   
 }
 

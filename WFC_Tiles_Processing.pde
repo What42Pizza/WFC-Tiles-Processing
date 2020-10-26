@@ -122,6 +122,8 @@ void setup() {
 
 int Count = 0;
 
+int LastDrawnTile = 0;
+
 void draw() {
   
   //IntList NewTiles = new IntList(); // This is to draw only the new tiles that are collapsed, but it doesn't work because sometimes a tile that isn't selected is fully collapsed by PropagateContraints()
@@ -137,13 +139,13 @@ void draw() {
     }
   }
   
-  for (int i = 0; i < CollapsedTiles.size(); i += 2) {
+  for (int i = LastDrawnTile; i < CollapsedTiles.size(); i += 2) {
     int TileX = CollapsedTiles.get(i    );
     int TileY = CollapsedTiles.get(i + 1);
     int[] Tile = SPMap [TileX] [TileY];
     image (TileTypes[Tile[0]].Texture, TileX * TileWidth, TileY * TileHeight);
   }
-  CollapsedTiles = new IntList();
+  LastDrawnTile = CollapsedTiles.size();
   
   /*
   for (int i = 0; i < NewTiles.size(); i += 2) {
