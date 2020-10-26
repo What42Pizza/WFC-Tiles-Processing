@@ -1,5 +1,5 @@
 // Started 10/21/20
-// Last updated 10/25/20
+// Last updated 10/26/20
 
 
 
@@ -137,6 +137,14 @@ void draw() {
     }
   }
   
+  for (int i = 0; i < CollapsedTiles.size(); i += 2) {
+    int TileX = CollapsedTiles.get(i    );
+    int TileY = CollapsedTiles.get(i + 1);
+    int[] Tile = SPMap [TileX] [TileY];
+    image (TileTypes[Tile[0]].Texture, TileX * TileWidth, TileY * TileHeight);
+  }
+  CollapsedTiles = new IntList();
+  
   /*
   for (int i = 0; i < NewTiles.size(); i += 2) {
     int TileX = NewTiles.get(i    );
@@ -146,7 +154,7 @@ void draw() {
   }
   //*/
   
-  ///*
+  /*
   for (int YPos = 0; YPos < MapHeight; YPos ++) {
     for (int XPos = 0; XPos < MapWidth; XPos ++) {
       int[] SlotTiles = SPMap [XPos] [YPos];

@@ -16,12 +16,15 @@ long Averages_TimeForSelecting = 0;
 int  Averages_PropagateCount = 0;
 int  Averages_SelectingCount = 0;
 
+IntList CollapsedTiles = new IntList();
+
 void CollapseSelected() { // ------------------------------------------------------------------------------ Working
   if (Done) return;
   
   int[] AllowedTiles = SPMap [SelectedX] [SelectedY];
   int CollapsedTile = ChooseRandom (AllowedTiles);
   SPMap [SelectedX] [SelectedY] = new int[] {CollapsedTile};
+  AddCoordsToList (CollapsedTiles, SelectedX, SelectedY);
   
   long StartNano;
   
@@ -160,6 +163,7 @@ void PropagateConstraints (int StartXPos, int StartYPos) { // ------------------
     if (Arrays.equals(SlotTiles, AllowedTiles)) continue; // Skip if nothing changes
     
     SPMap [XPos] [YPos] = AllowedTiles;                   // Update slot in map
+    if (AllowedTiles.length == 1) AddCoordsToList (CollapsedTiles, XPos, YPos);
     
     if (XPos > 0            ) AddCoordsToList (SlotsToCheck, XPos - 1, YPos    , AlreadyAddedSlots); // Continue to all neighbors
     if (YPos > 0            ) AddCoordsToList (SlotsToCheck, XPos    , YPos - 1, AlreadyAddedSlots);
