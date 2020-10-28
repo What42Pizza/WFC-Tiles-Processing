@@ -153,16 +153,16 @@ void PropagateConstraints (int StartXPos, int StartYPos) { // ------------------
     if (SlotTiles.length == 1) continue;   // Skip if this slot is already done
     
     if (SlotTiles.length == 0) {
-      println ("Error in PropagateConstrains(): Slot at " + XPos + " " + YPos + " has an entropy of 0.");
+      println ("Error in PropagateConstrains(): Slot at " + XPos + ", " + YPos + " has an entropy of 0.");
       Errored = true;
       return;
     }
     
     int[] AllowedTiles = GetAllowedTiles (XPos, YPos, SlotTiles); // Get new allowed tiles
     
-    if (Arrays.equals(SlotTiles, AllowedTiles)) continue; // Skip if nothing changes
+    if (Arrays.equals(SlotTiles, AllowedTiles)) continue;         // Skip if nothing changes
     
-    SPMap [XPos] [YPos] = AllowedTiles;                   // Update slot in map
+    SPMap [XPos] [YPos] = AllowedTiles;                           // Update slot in map
     if (AllowedTiles.length == 1) AddCoordsToList (CollapsedTiles, XPos, YPos);
     
     if (XPos > 0            ) AddCoordsToList (SlotsToCheck, XPos - 1, YPos    , AlreadyAddedSlots); // Continue to all neighbors
