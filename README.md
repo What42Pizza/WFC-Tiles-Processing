@@ -6,4 +6,4 @@ This is an implementation of the tiles mode of the Wave Function Collapse algori
 
 Here is an example of a generated circuit board:
 
-![GitHub Logo](example generated circuit.png)
+![GitHub Logo](Example Generated Circuit.png)
